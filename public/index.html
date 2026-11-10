@@ -13,7 +13,7 @@
 <body>
   <div class="shell">
     <header>
-      <div class="brand"><svg class="brand-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 17 8 6l9 5a20 20 0 0 1 6 0l9-5 1 11c2 3 2 7 0 10-2 5-7 8-13 8S9 32 7 27c-2-3-2-7 0-10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 22h.01M26 22h.01M18 27c1.3 1.3 2.7 1.3 4 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>meowimi</span></div>
+      <button class="brand" id="home" type="button" aria-label="Meowimi home"><svg class="brand-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 17 8 6l9 5a20 20 0 0 1 6 0l9-5 1 11c2 3 2 7 0 10-2 5-7 8-13 8S9 32 7 27c-2-3-2-7 0-10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 22h.01M26 22h.01M18 27c1.3 1.3 2.7 1.3 4 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>meowimi</span></button>
       <span class="header-note"><span class="status-dot"></span>Your curious companion</span>
     </header>
     <main>
@@ -22,6 +22,7 @@
         <p class="welcome-kicker">Thoughtful answers, curious by nature.</p>
         <h1>What’s on your mind?</h1>
         <p class="welcome-copy">Ask anything, revisit an idea, or see what’s changed. Meowimi keeps the conversation going and searches when it needs to.</p>
+        <button id="resume" class="resume" type="button" hidden>Return to conversation</button>
         <div class="examples" aria-label="Example questions"><button type="button">What can you help me research?</button><button type="button">How do you check what’s changed?</button></div>
       </section>
       <div id="messages" class="messages" aria-live="polite"></div>
