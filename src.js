@@ -19,7 +19,7 @@ export function annotate(parts, citations) {
   return parts.map(part => {
     const inserts = new Map();
     for (const a of part.annotations || []) {
-      if (a.type !== 'url_citation' || !Number.isInteger(a.end_index) || a.end_index < 0 || a.end_index > part.text.length) continue;
+      if (a.type !== 'url_citation' || !Number.isInteger(a.end_index) || a.end_index <= 0 || a.end_index > part.text.length) continue;
       const index = citations.findIndex(c => c.url === a.url);
       if (index < 0) continue;
       const label = ` [${index + 1}](${a.url.replaceAll('(', '%28').replaceAll(')', '%29')})`;
