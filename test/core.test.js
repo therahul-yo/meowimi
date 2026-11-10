@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {validZone,buildInput,citationsFrom,annotate} from '../src.js';
+test('history retains exact prior turns and local date context',()=>{const input=buildInput([{role:'user',content:'Five CRMs: A, B, C, D, E',created_at:'2026-11-03T20:00:00Z'},{role:'assistant',content:'A costs $10',created_at:'2026-11-03T20:01:00Z'}],'Has that changed?','2026-11-10T20:00:00Z','Asia/Kolkata');assert.equal(input.length,3);assert.match(input[0].content,/Wednesday, 4 November 2026/);assert.match(input[0].content,/Five CRMs: A, B, C, D, E/);assert.match(input[1].content,/A costs \$10/)});
+test('invalid timezone falls back to UTC',()=>assert.equal(validZone('not/a-zone'),'UTC'));
+test('citations reject unsafe URLs, deduplicate and link at claim',()=>{const parts=[{text:'Price is $10.',annotations:[{type:'url_citation',url:'https://example.com/pricing',title:'Pricing',end_index:13},{type:'url_citation',url:'javascript:alert(1)',end_index:13},{type:'url_citation',url:'https://example.com/pricing',title:'Duplicate',end_index:13}]}];const citations=citationsFrom(parts);assert.equal(citations.length,1);assert.match(annotate(parts,citations),/Price is \$10\. \[1\]\(https:\/\/example.com\/pricing\)/)});
