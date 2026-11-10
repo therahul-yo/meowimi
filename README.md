@@ -1,4 +1,4 @@
-# Search Chat
+# Meowimi
 
 A single-user chat agent with web search and a persistent, dated conversation. Ask it about an earlier recommendation or what has changed since a previous discussion.
 
